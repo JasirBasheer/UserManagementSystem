@@ -1,0 +1,121 @@
+
+
+
+<%- include('../layouts/admin/header') -%>
+<div class="dashboardMainContainer">
+    <div class="dashboardContainer">
+        <div class="dashboardTitleContainer">
+            <div class="">
+
+        <h4>Dashboard</h4>
+        <h6>Hello Admin <span><%= admin.name %> </span> and welcome back!</h6>    
+
+            </div>
+
+        </div>
+        <h5 style="text-align: center; margin-top: 11px;font-weight: bold;">USERS</h5>
+        <div class="usersDetailsMainContainer">
+            <div class="usersDetailsContainer">
+
+            <% if (users.length > 0) { %>
+                <% for (let i = 0; i < users.length; i++) { %>
+                   <div class="userdetails">
+                    <div class="">
+                        <div class="">
+                        <h5><%= users[i].name %></h5>
+                        <p>  <%= users[i].email %></p>
+                    </div>
+                        <div class="dashboardfuncs"><a href="/admin/edit-user?id=<%= users[i]._id%>"><div class="dashfunc" style="background-color: rgb(69, 151, 124);">Edit</div></a>
+                            <a href="/admin/delete-user?id=<%= users[i]._id%>"><div class="dashfunc">Delete</div></a>
+                        </div>
+                    </div>
+                    
+                    
+                     
+            
+                </div>
+                <% } %>
+            <% } else { %>
+                <tr>
+                    <td colspan="2">Users Not found</td>
+                </tr>
+            <% } %>
+           
+    
+        </div>
+
+        <div class="addnewUser">
+            <div class="">
+            <a href="/admin/new-user">Create User</a>
+        </div>
+
+        </div>
+        </div>
+
+
+        <h5 style="text-align: center; margin-top: 11px;font-weight: bold;">ADMINS</h5>
+        <div class="usersDetailsMainContainer">
+            <div class="usersDetailsContainer">
+
+            <% if (admins.length > 0) { %>
+                <% for (let i = 0; i < admins.length; i++) { %>
+                   <div class="userdetails">
+                    <div class="">
+                        <div class="">
+                        <h5><%= admins[i].name %></h5>
+                        <p>  <%= admins[i].email %></p>
+                    </div>
+                        <div class="dashboardfuncs"><a href="/admin/edit-user?id=<%= admins[i]._id%>"><div class="dashfunc" style="background-color: rgb(69, 151, 124);">Edit</div></a>
+                            <a href="/admin/delete-user?id=<%= admins[i]._id%>"><div class="dashfunc">Delete</div></a>
+                        </div>
+                    </div>
+                    
+                    
+                     
+            
+                </div>
+                <% } %>
+            <% } else { %>
+                <tr>
+                    <td colspan="2">Users Not found</td>
+                </tr>
+            <% } %>
+           
+    
+        </div>
+
+        <div class="addnewUser">
+            <div class="">
+            <a href="/admin/addnewadmin">add admin</a>
+        </div>
+
+        </div>
+        </div>
+
+
+        <div class="homepagefunctionality">
+            <a href="/admin/logout"><div class="logout" >Logout</div></a>
+        </div>
+
+        
+       
+
+
+    </div>
+
+
+
+
+
+     
+</div>
+
+        
+      
+    </div>
+
+
+
+
+
+<%- include('../layouts/admin/footer') -%>

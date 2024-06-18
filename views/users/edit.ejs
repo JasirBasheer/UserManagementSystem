@@ -1,0 +1,64 @@
+
+
+
+
+<%- include('../layouts/user/header') -%>
+<style>
+    .Containerr{
+    width: 30%;
+    height: 75%;
+    background-color: white;
+    border-radius: 21px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.437);
+    display: flex;
+
+}
+.rightContainer{
+    width: 92%;
+    height: 100%;
+     border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightinnerContainer{
+    width: 75%;
+    height: 85%;
+
+}
+</style>
+<div class="mainContainer">
+<div class="Containerr">
+    
+    <div class="rightContainer">
+        <div class="rightinnerContainer">
+            <div class="signuptext">
+                <h1>Update Profile</h1>
+            </div>
+            <div class="signupform">
+                <form action="/edit" method="post">
+                    <div class="form-group">
+                        <input type="hidden" name="user_id" value="<%= user._id %>">
+                        <label for="email">UserName</label>
+                        <input type="text" name="name" value="<%= user.name %>" class="form-control"  placeholder="Enter New Name" required>
+                      
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" value="<%= user.email %>"  class="form-control" placeholder="Enter New email" required>
+                    </div>
+                    <input type="submit" class="btn" value="Update your profile"> 
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+</div>
+<%- include('../layouts/user/footer') -%>    

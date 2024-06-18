@@ -1,0 +1,39 @@
+<%- include('../layouts/admin/header') -%>
+<div class="mainContainer">
+<div class="Containerr">
+    <div class="leftimgContainer">
+        <img src="https://i.ibb.co/GRXcSw8/there-is-very-colorful-building-with-staircase-going-up-it-generative-ai-901003-145126.jpg" alt="sdfsd" srcset="">
+
+    </div>
+    <div class="rightContainer">
+        <div class="rightinnerContainer">
+            <div class="signuptext">
+                <h1>Welcome Back Boss</h1>
+            </div>
+            <div class="signupform">
+                <form action="/admin" method="post">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Email" name="email" id="email " class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" placeholder="password" name="password" id="password " class="form-control">
+                      
+                    </div>
+                    <% if (typeof message !== 'undefined') { %>
+                        <div style="color:red;"><%= message %></div>
+                      <% } %>
+                    <button type="submit" class="btn" value="Login">Login</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+</div>
+<%- include('../layouts/admin/footer') -%>    

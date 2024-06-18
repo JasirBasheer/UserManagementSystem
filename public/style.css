@@ -1,0 +1,118 @@
+body{
+    background-color: #C8C6D1;
+
+}
+.mainContainer{
+    background-color: #C8C6D1;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Containerr{
+    width: 70%;
+    height: 82%;
+    background-color: white;
+    border-radius: 21px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.437);
+    display: flex;
+
+}
+
+.leftimgContainer{
+    width: 48%;
+    height: 100%;
+}
+
+.leftimgContainer img{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 21px;
+    border-bottom-left-radius: 21px;
+
+}
+.rightContainer{
+    width: 52%;
+    height: 100%;
+     border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightinnerContainer{
+    width: 75%;
+    height: 85%;
+
+}
+
+.signuptext{
+   width: 100%;
+   height: 13vh;
+  text-align: center;
+  margin-top: 57px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+.signuptext h1{
+    font-size: 1.7rem;
+    font-weight: bolder;
+    padding-top: 11px;
+}
+
+.signupform{
+    width: 100%;
+    height: 45vh;
+    padding: 8px;
+    padding-top: 22px;  
+}
+.btn{
+    width: 100%;
+    height: 2.8rem;
+    background-color: black;
+    margin-top: 24px;
+    color: white;
+    border-radius: 0.5rem;
+}
+.btn:hover{
+    color: white;
+
+}
+
+/* Home css */
+
+.homeMainContainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.homeContainer h3{
+    font-weight: bold;
+}
+.homeContainer span{
+    color: rgb(12, 77, 131);
+}
+.homepagefunctionality{
+    width: 100%;
+    height: auto; 
+    display: flex;
+    justify-content: space-between;
+}
+.homepagefunctionality a{
+    text-decoration: none;
+}
+
+.homepagefunctionality svg{
+    width: 20px;
+}
+
+
+/* Edit profile */
+
