@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt')
+const {adminEmail,adminPassword,adminname}=require('../config/config')
 
 const loadAdmin = async(req,res)=>{
     try {
@@ -12,6 +13,27 @@ const loadAdmin = async(req,res)=>{
 const verifyLogin = async(req,res)=>{
     try {
         const {email, password}=req.body
+        if(email == adminEmail){
+                 console.log(email+" asdfasf "+adminEmail);
+
+       
+            
+            if(password === adminPassword){
+                  req.session.admin_id = "admin";
+                  res.redirect("/admin/home");
+                  return;
+            }else{
+            res.render('login', { message: "Password is not correct" });
+                return;
+        }
+        }
+
+
+
+
+
+
+
         const userData = await User.findOne({email:email});
 
         if(userData){
@@ -41,17 +63,38 @@ const verifyLogin = async(req,res)=>{
     }
 }
 
-const loadDashboard = async(req,res)=>{
+const loadDashboard = async (req, res) => {
     try {
-        const adminData = await User.findById({_id:req.session.admin_id})
-        const userData = await User.find({is_admin:0})
-        const adminsData = await User.find({is_admin:1})
+        let adminData;
 
-        res.render('home',{users:userData,admin:adminData,admins:adminsData})
+        if (req.session.admin_id === "admin") {
+            
+            adminData = {
+                _id: "admin",
+                name: adminname,
+                email: adminEmail, 
+                is_admin: 1
+            };
+        } else {
+            
+            adminData = await User.findById(req.session.admin_id);
+            if (!adminData || adminData.is_admin !== 1) {
+               
+                req.session.destroy(); 
+                return res.redirect('/admin');
+            }
+        }
+
+        const userData = await User.find({ is_admin: 0 });
+        const adminsData = await User.find({ is_admin: 1 });
+
+        res.render('home', { users: userData, admin: adminData, admins: adminsData ,admine:adminEmail,adminname:adminname});
     } catch (error) {
         console.log(error.message);
+        res.redirect('/admin');
     }
-}
+};
+
 
 
 const logout = async(req,res)=>{
