@@ -28,8 +28,8 @@ const loadRegister = async (req,res)=>{
 
 const inserUser = async(req,res)=>{
     try {
-        const { name, email, password } = req.body;
-
+        const { name, email, password } = req.body; 
+ 
         if (name =="") {
             console.log("dfsafsd");
             return res.render('registration', { message: "Please enter a valid user name",title:"Sign Up"});

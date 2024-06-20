@@ -46,6 +46,8 @@ adminRoute.get('/addnewadmin',auth.isLogin,adminController.loadCreateAdmin)
 
 adminRoute.post('/addnewadmin',auth.isLogin,adminController.createAdmin)
 
+adminRoute.get('/search',auth.isLogin,adminController.search)
+
 adminRoute.get('*',(req,res)=>{
     res.redirect('/admin')
 })

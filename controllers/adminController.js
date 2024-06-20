@@ -14,7 +14,7 @@ const verifyLogin = async(req,res)=>{
     try {
         const {email, password}=req.body
         if(email == adminEmail){
-                 console.log(email+" asdfasf "+adminEmail);
+                 console.log(email+" xckjdjck "+adminEmail);
 
        
             
@@ -284,6 +284,45 @@ const createAdmin = async(req,res)=>{
     }
 }
 
+
+
+const search = async(req,res)=>{
+    try {
+        const query = req.query.q;
+        if (!query) {
+            return res.status(400).send({ message: 'Search query is required' });
+        }
+
+        const users = await User.find({
+            $or: [
+                { name: new RegExp(query, 'i') },
+                { email: new RegExp(query, 'i') }
+            ]
+        });
+
+        const adminData = req.session.admin_id === "admin" ? {
+            _id: "admin",
+            name: adminname,
+            email: adminEmail,
+            is_admin: 1
+        } : await User.findById(req.session.admin_id);
+
+        if (!adminData) {
+            req.session.destroy();
+            return res.redirect('/admin');
+        }
+
+        // const userData = await User.find({ is_admin: 0 });
+        const adminsData = await User.find({ is_admin: 1 });
+
+
+        res.render('home',{users,admin: adminData,admins: adminsData,admine:adminEmail,adminname:adminname})
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: 'Internal Server Error' });
+    }
+};
+
 module.exports={
 loadAdmin,
 verifyLogin,
@@ -293,6 +332,7 @@ loadNewUser,
 createNewUser,
 editUserLoad,
 updateUsers,
+search,
 deleteUsers,
 loadCreateAdmin,
 createAdmin,
